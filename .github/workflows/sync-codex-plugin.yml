@@ -1,0 +1,48 @@
+name: Sync Codex plugin
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .claude-plugin/plugin.json
+      - skills/engineering/**
+      - skills/productivity/**
+      - codex-plugin/sync.ps1
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-codex-plugin-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository == 'asd880921/matt-skills'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Codex plugin
+        shell: pwsh
+        run: |
+          ./codex-plugin/sync.ps1
+          ./codex-plugin/sync.ps1 -Check
+
+      - name: Commit generated plugin
+        shell: bash
+        run: |
+          git add -- .agents/plugins/marketplace.json plugins/mattpocock-skills
+          if git diff --cached --quiet; then
+            echo "Codex plugin is already in sync."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: 同步 Codex plugin"
+          git push
