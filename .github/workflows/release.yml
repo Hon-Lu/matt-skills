@@ -10,6 +10,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     name: Version
+    # 發版只在上游進行；fork 上跑會因為沒有建立 PR 的權限而失敗，且會讓版號與 CHANGELOG 與上游分岔。
+    if: github.repository == 'mattpocock/skills'
     runs-on: ubuntu-latest
     permissions:
       contents: write
