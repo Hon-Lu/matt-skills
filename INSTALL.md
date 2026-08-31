@@ -4,10 +4,16 @@
 
 官方 marketplace 的 `mattpocock-skills` 版本號不會隨上游改動調整，所以這裡改用自己的 fork 當 marketplace，需要時直接移除再安裝就能拿到最新內容。
 
+每個步驟都有兩種寫法：終端機的 `claude plugin ...`，或在 Claude Code 對話中輸入 `/plugin ...`，擇一即可。
+
 安裝前先確認沒有裝官方那一份，否則同一組 skills 會重複載入：
 
 ```powershell
 claude plugin list
+```
+
+```text
+/plugin list
 ```
 
 若清單裡有官方來源的 `mattpocock-skills`，先移除：
@@ -16,27 +22,37 @@ claude plugin list
 claude plugin uninstall mattpocock-skills
 ```
 
+```text
+/plugin uninstall mattpocock-skills
+```
+
 ### 安裝
 
 ```powershell
 claude plugin marketplace add asd880921/matt-skills
+claude plugin install mattpocock-skills@mattpocock
 ```
 
-```powershell
-claude plugin install mattpocock-skills@mattpocock
+```text
+/plugin marketplace add asd880921/matt-skills
+/plugin install mattpocock-skills@mattpocock
 ```
 
 `mattpocock` 是 fork 內 `.claude-plugin/marketplace.json` 定義的 marketplace 名稱，不是 GitHub 帳號。安裝完成後重開 Claude Code，skills 才會載入。
 
-在對話中也可以用對應的 `/plugin marketplace add asd880921/matt-skills` 與 `/plugin install mattpocock-skills@mattpocock`。
-
 ### 更新
 
-先讓本機的 marketplace 拉到 fork 最新內容，再更新 plugin：
+先讓本機的 marketplace 拉到 fork 最新內容：
 
 ```powershell
 claude plugin marketplace update mattpocock
 ```
+
+```text
+/plugin marketplace update mattpocock
+```
+
+再更新 plugin 本體。`/plugin` 沒有 `update` 子命令，這一步只能在終端機執行：
 
 ```powershell
 claude plugin update mattpocock-skills@mattpocock
@@ -44,24 +60,28 @@ claude plugin update mattpocock-skills@mattpocock
 
 更新後要重開 Claude Code 才會套用。
 
-因為這個 fork 不會調整 `.claude-plugin/plugin.json` 的版本號，`update` 有機會判定版本相同而不重裝。確認 skills 沒有跟著更新時，改用移除再安裝：
+因為這個 fork 不會調整 `.claude-plugin/plugin.json` 的版本號，`update` 有機會判定版本相同而不重裝。確認 skills 沒有跟著更新時，改用移除再安裝，這組在對話中也能執行：
 
 ```powershell
 claude plugin uninstall mattpocock-skills@mattpocock
+claude plugin install mattpocock-skills@mattpocock
 ```
 
-```powershell
-claude plugin install mattpocock-skills@mattpocock
+```text
+/plugin uninstall mattpocock-skills@mattpocock
+/plugin install mattpocock-skills@mattpocock
 ```
 
 ### 移除
 
 ```powershell
 claude plugin uninstall mattpocock-skills@mattpocock
+claude plugin marketplace remove mattpocock
 ```
 
-```powershell
-claude plugin marketplace remove mattpocock
+```text
+/plugin uninstall mattpocock-skills@mattpocock
+/plugin marketplace remove mattpocock
 ```
 
 ## Codex 安裝、更新與移除
