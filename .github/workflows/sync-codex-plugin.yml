@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   sync:
-    if: github.repository == 'asd880921/matt-skills'
+    if: github.repository == 'Hon-Lu/matt-skills'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository

@@ -21,7 +21,7 @@
 ### 安裝
 
 ```text
-/plugin marketplace add asd880921/matt-skills
+/plugin marketplace add Hon-Lu/matt-skills
 /plugin install mattpocock-skills@mattpocock
 ```
 
@@ -58,7 +58,7 @@
 開啟終端機後依序執行：
 
 ```powershell
-codex plugin marketplace add asd880921/matt-skills
+codex plugin marketplace add Hon-Lu/matt-skills
 ```
 
 ```powershell
@@ -93,7 +93,7 @@ codex plugin marketplace remove matt-skills
 
 第一次設定時，先到此 fork 的 **Actions** 頁籤啟用 workflows。若 workflow 無法 push，請到 **Settings → Actions → General → Workflow permissions** 確認 Actions 允許寫入 repository contents。
 
-1. 在 GitHub 開啟 `asd880921/matt-skills`。
+1. 在 GitHub 開啟 `Hon-Lu/matt-skills`。
 2. 點選 **Sync fork**，確認後選擇 **Update branch**。
 3. 等待 GitHub Actions 的 **Sync Codex plugin** workflow 完成。
 

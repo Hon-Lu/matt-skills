@@ -60,7 +60,7 @@ function New-PluginManifest {
         description = $ClaudeManifest.description
         author = $ClaudeManifest.author
         homepage = $ClaudeManifest.homepage
-        repository = 'https://github.com/asd880921/matt-skills'
+        repository = 'https://github.com/Hon-Lu/matt-skills'
         license = $ClaudeManifest.license
         keywords = $ClaudeManifest.keywords
         skills = './skills/'

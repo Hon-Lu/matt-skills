@@ -19,7 +19,7 @@ It also removes Claude's `disable-model-invocation: true` key from generated cop
 Add this repository's GitHub marketplace, then install the plugin:
 
 ```bash
-codex plugin marketplace add asd880921/matt-skills
+codex plugin marketplace add Hon-Lu/matt-skills
 codex plugin add mattpocock-skills@matt-skills
 ```
 
